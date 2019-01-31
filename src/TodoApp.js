@@ -6,7 +6,7 @@ import {Todolist} from './Todolist'
 export class TodoApp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { items: [], text: '' };
+    this.state = { items: [], text: '', priority: '', dueDate: ''};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -19,11 +19,28 @@ export class TodoApp extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="new-todo">
             What needs to be done?
+            <input
+                id="new-todo"
+                onChange={(e)=> this.setState({text:e.target.value})}
+                value={this.state.text}
+             />
+          </label>
+
+          <label htmlFor="priority">
+             Priority
           </label>
           <input
-            id="new-todo"
-            onChange={this.handleChange}
-            value={this.state.text}
+            id="priority"
+            onChange={(e)=> this.setState({priority:e.target.value})}
+            value={this.state.priority}
+          />
+          <label htmlFor="priority">
+            Date
+          </label>
+          <input
+            id="dueDate"
+            onChange={(e)=> this.setState({dueDate:e.target.value})}
+            value={this.state.dueDate}
           />
           <button>
             Add #{this.state.items.length + 1}
@@ -34,6 +51,7 @@ export class TodoApp extends React.Component {
   }
 
   handleChange(e) {
+     e.preventDefault();
     this.setState({ text: e.target.value });
   }
 
@@ -44,11 +62,15 @@ export class TodoApp extends React.Component {
     }
     const newItem = {
       text: this.state.text,
-      id: Date.now()
+      id: Date.now(),
+      priority: this.state.priority,
+      dueDate: this.state.dueDate
     };
     this.setState(prevState => ({
       items: prevState.items.concat(newItem),
-      text: ''
+      text: '',
+      priority: '',
+      dueDate: ''
     }));
   }
 }
