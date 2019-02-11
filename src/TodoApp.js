@@ -14,38 +14,44 @@ export class TodoApp extends React.Component {
   render() {
     return (
       <div>
-        <h3>TODO</h3>
-        <Todolist items={this.state.items} />
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="new-todo">
-            What needs to be done?
-            <input
-                id="new-todo"
-                onChange={(e)=> this.setState({text:e.target.value})}
-                value={this.state.text}
-             />
-          </label>
+          <div>
 
-          <label htmlFor="priority">
-             Priority
-          </label>
-          <input
-            id="priority"
-            onChange={(e)=> this.setState({priority:e.target.value})}
-            value={this.state.priority}
-          />
-          <label htmlFor="priority">
-            Date
-          </label>
-          <input
-            id="dueDate"
-            onChange={(e)=> this.setState({dueDate:e.target.value})}
-            value={this.state.dueDate}
-          />
+              <label htmlFor="new-todo">
+                Task:
+                <input
+                    id="new-todo"
+                    onChange={(e)=> this.setState({text:e.target.value})}
+                    value={this.state.text}
+                 />
+              </label>
+          </div>
+          <div>
+              <label htmlFor="priority">
+                 Priority:
+                  <input
+                    id="priority"
+                    onChange={(e)=> this.setState({priority:e.target.value})}
+                    value={this.state.priority}
+                  />
+              </label>
+          </div>
+          <div>
+              <label htmlFor="priority">
+                Date:
+                  <input
+                    id="dueDate"
+                    onChange={(e)=> this.setState({dueDate:e.target.value})}
+                    value={this.state.dueDate}
+                  />
+               </label>
+          </div>
           <button>
-            Add #{this.state.items.length + 1}
+            Add To do #{this.state.items.length + 1}
           </button>
         </form>
+        <h4 class = "light-blue">Register To do</h4>
+        <Todolist items={this.state.items} />
       </div>
     );
   }
@@ -66,8 +72,8 @@ export class TodoApp extends React.Component {
       priority: this.state.priority,
       dueDate: this.state.dueDate
     };
-    this.setState(prevState => ({
-      items: prevState.items.concat(newItem),
+    this.setState(State => ({
+      items: State.items.concat(newItem),
       text: '',
       priority: '',
       dueDate: ''

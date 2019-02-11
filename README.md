@@ -18,7 +18,7 @@ Introduction to ReactJS.
 
 # Part 2: Create React Components for the TODO App
 
-1. Create a new JavaScript file called *Todo.js* 
+1. Create a new JavaScript file called *Todo.js*
 
 ```javascript
 
@@ -28,10 +28,10 @@ export class Todo extends React.Component {
 
     constructor(props) {
         super(props);
-    }   
+    }
 
     render() {
-        return (  
+        return (
           //Add your code here to represent a TODO
         );
     }
@@ -43,7 +43,7 @@ export class Todo extends React.Component {
 3. Once your understand these concepts, then add the HTML code to display the TODO information. You will access the TODO data by using the react props *text* ,  *priority* and *dueDate* as the following example (notice the curly braces inside the HTML used to evaluate the JavaScript expression)
 
 ```javascript
-<h2>{this.props.text}  ... </h2> 
+<h2>{this.props.text}  ... </h2>
 //Do not forget to add the other properties of your TODO!
 ```
 
@@ -56,7 +56,7 @@ import {Todo} from './Todo'
 
 hint: You should use the map function to dynamically create your list inside the render method as the following example: https://codepen.io/gaearon/pen/jrXYRR?editors=0011
 
-React Documentation: https://reactjs.org/docs/lists-and-keys.html 
+React Documentation: https://reactjs.org/docs/lists-and-keys.html
 
 5. Import your TodoList component into the App.js file and then add the <TodoList> tag to your code so it loads the Todo list.
   You can use the following code to create some sample data:
@@ -66,16 +66,16 @@ render() {
       const todos = [{text:"Learn React", priority:5, dueDate: new Date() },
           {text:"Learn about APIs", priority:4, dueDate: new Date(2018,8,30) },
           {text:"write TODO App", priority:3, dueDate: new Date(2018,9,30) }];
- 
+
  ...
- 
+
  <TodoList todoList={todos}/>
 ```
 
 6. Run your application and verify that it works as expected:
 
 ```javascript
-  npm start 
+  npm start
 ```
 
 
